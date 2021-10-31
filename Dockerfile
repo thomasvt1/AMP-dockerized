@@ -16,4 +16,4 @@ ENV AMP_SUPPORT_URL="https://github.com/MitchTalmadge/AMP-dockerized/"
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN bash <(wget -qO- getamp.sh)
+RUN bash < (wget -qO- getamp.sh)
