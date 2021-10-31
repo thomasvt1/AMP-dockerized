@@ -18,6 +18,15 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 ADD https://getamp.sh getamp.sh
 
+# Configure Locales
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends locales && \
+    apt-get -y clean && \
+    apt-get -y autoremove --purge && \
+    rm -rf \
+    /tmp/* \
+    /var/lib/apt/lists/* \
+    /var/tmp/*
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
     dpkg-reconfigure --frontend=noninteractive locales && \
     update-locale LANG=en_US.UTF-8
