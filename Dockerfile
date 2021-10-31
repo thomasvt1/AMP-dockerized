@@ -17,5 +17,12 @@ ENV AMP_SUPPORT_URL="https://github.com/MitchTalmadge/AMP-dockerized/"
 ARG DEBIAN_FRONTEND=noninteractive
 
 ADD https://getamp.sh getamp.sh
-RUN dpkg-reconfigure locales && locale-gen
+
+RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+    dpkg-reconfigure --frontend=noninteractive locales && \
+    update-locale LANG=en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+
 RUN chmod +x getamp.sh && bash getamp.sh
