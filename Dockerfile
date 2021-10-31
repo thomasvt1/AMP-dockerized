@@ -16,5 +16,5 @@ ENV AMP_SUPPORT_URL="https://github.com/MitchTalmadge/AMP-dockerized/"
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-ADD getamp.sh getamp.sh
+ADD https://getamp.sh getamp.sh
 RUN ./getamp.sh
